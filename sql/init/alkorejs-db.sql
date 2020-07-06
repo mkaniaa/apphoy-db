@@ -12,3 +12,4 @@
 \ir tables/cruise.sql
 \ir tables/participant.sql
 \ir tables/payment.sql
+\ir tables/crew.sql
