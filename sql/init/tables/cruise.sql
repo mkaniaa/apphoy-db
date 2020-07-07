@@ -11,7 +11,8 @@ SET search_path = :schema, public;
 CREATE TABLE IF NOT EXISTS cruise (
     id                      BIGSERIAL NOT NULL,
     common_name             TEXT NOT NULL,
-    date                    DATE NOT NULL,
+    start_date              DATE NOT NULL,
+    end_date                DATE NOT NULL,
     start_address           TEXT,
     final_address           TEXT,
     CONSTRAINT cruise_pk PRIMARY KEY (id)
