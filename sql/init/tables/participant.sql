@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS participant (
     surname                 TEXT,
     phone                   TEXT,
     email                   TEXT,
-    birth_date              TEXT,
+    birth_date              DATE,
     pesel                   TEXT,
     city                    TEXT,
     tshirt_size             TEXT,
