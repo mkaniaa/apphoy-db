@@ -10,5 +10,8 @@
 -- tables
 \ir tables/install_tables.sql
 
+-- views
+\ir views/install_views.sql
+
 -- functions
 \ir functions/install_functions.sql

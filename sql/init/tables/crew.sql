@@ -14,8 +14,7 @@ CREATE TABLE IF NOT EXISTS crew (
     cruise_id               BIGINT NOT NULL REFERENCES cruise,
     boat_id                 BIGINT REFERENCES boat,
     CONSTRAINT crew_pk PRIMARY KEY (id),
-    CONSTRAINT crew_participant_id_cruise_id UNIQUE (participant_id, cruise_id),
-    CONSTRAINT crew_participant_id_boat_id UNIQUE (participant_id, boat_id)
+    CONSTRAINT crew_participant_id_cruise_id UNIQUE (participant_id, cruise_id)
 );
 
 COMMENT ON TABLE crew IS 'Table keeps information about crews from all cruises.';

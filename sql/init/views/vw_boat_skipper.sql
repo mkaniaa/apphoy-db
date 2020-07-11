@@ -8,16 +8,19 @@ SET search_path = :schema, public;
 
 -- ---------------------------------------------------------------------------
 
-DROP VIEW IF EXISTS vw_boat_skipper;
+DROP VIEW IF EXISTS vw_boat_skipper CASCADE;
 
 CREATE OR REPLACE VIEW vw_boat_skipper AS
     SELECT
+        cu.start_date AS cruise_start_date,
         cu.id AS cruise_id,
         cu.common_name AS cruise_common_name,
         b.id AS boat_id,
         b.common_name AS boat_common_name,
         p.name || ' ' || p.surname AS skipper_full_name,
-        DATE_PART('year', AGE(p.birth_date)) AS skipper_age
+        DATE_PART('year', AGE(p.birth_date)) AS skipper_age,
+        p.phone AS skipper_phone,
+        p.email AS skipper_email
     FROM crew cw
     JOIN participant p
     ON cw.participant_id = p.id
