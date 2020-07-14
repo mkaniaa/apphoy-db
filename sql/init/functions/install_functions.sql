@@ -10,3 +10,6 @@ SET search_path = :schema, public;
 
 -- public
 \ir public/public__set_seq_above_max.sql
+
+-- cruise_organization
+\ir cruise_organization/cruise__update_cruise_dates.sql

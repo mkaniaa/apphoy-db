@@ -76,7 +76,7 @@ BEGIN
 
     EXECUTE FORMAT(v_curr_val_sql_tl, p_schema_name, p_seq_name) INTO v_old_value;
     EXECUTE FORMAT(v_max_val_sql_tl, p_column_name, p_schema_name, p_table_name) INTO v_new_value;
-    v_new_value := v_new_value + p_val_above;
+    v_new_value := COALESCE(v_new_value + p_val_above, 1);
     EXECUTE FORMAT(v_alter_seq_sql_tl, p_schema_name, p_seq_name, v_new_value);
 
     RETURN QUERY

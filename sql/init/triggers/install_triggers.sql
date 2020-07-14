@@ -1,18 +1,11 @@
 /*****************************************************************************
 ** Author      : Marek Kania
-** Create Date : 2020-07-07
-** Description : Script installs all tables for cruise_organization schema.
+** Create Date : 2020-07-14
+** Description : Script installs all functions for cruise_organization schema.
 *****************************************************************************/
 
 SET search_path = :schema, public;
 
 -- ---------------------------------------------------------------------------
 
-\ir boat.sql
-\ir cruise.sql
-\ir participant.sql
-\ir payment.sql
-\ir crew.sql
-\ir participants_relation.sql
-\ir charter_company.sql
-\ir cruise_date.sql
+\ir cruise_date__update_cruise_dates__aiud.sql

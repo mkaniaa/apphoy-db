@@ -15,3 +15,6 @@
 
 -- functions
 \ir functions/install_functions.sql
+
+-- triggers
+\ir triggers\install_triggers.sql
