@@ -11,11 +11,10 @@ SET search_path = :schema, public;
 CREATE TABLE IF NOT EXISTS crew (
     id                      BIGSERIAL NOT NULL,
     participant_id          BIGINT NOT NULL REFERENCES participant,
-    cruise_id               BIGINT NOT NULL REFERENCES cruise,
     cruise_date_id          BIGINT NOT NULL REFERENCES cruise_date,
     boat_id                 BIGINT REFERENCES boat,
     CONSTRAINT crew_pk PRIMARY KEY (id),
-    CONSTRAINT crew_participant_id_cruise_id UNIQUE (participant_id, cruise_id)
+    CONSTRAINT crew_participant_id_cruise_id UNIQUE (participant_id, cruise_date_id)
 );
 
 COMMENT ON TABLE crew IS 'Table keeps information about crews from all cruises.';
