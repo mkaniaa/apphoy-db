@@ -10,7 +10,6 @@ SET search_path = :schema, public;
 
 CREATE TABLE IF NOT EXISTS participant (
     id                      BIGSERIAL NOT NULL,
-    function                TEXT NOT NULL,
     name                    TEXT NOT NULL,
     surname                 TEXT,
     phone                   TEXT,
@@ -27,5 +26,4 @@ CREATE TABLE IF NOT EXISTS participant (
 
 COMMENT ON TABLE participant IS 'Table keeps information about all participants.';
 
-COMMENT ON COLUMN participant.function IS 'Function of a participant in the cruise e.g. crew or skipper.';
 COMMENT ON COLUMN participant.tshirt_cut IS 'Cut of a tshirt for participant" M - men''s cut, W - women''s cut.';
