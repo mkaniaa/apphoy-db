@@ -8,10 +8,11 @@ SET search_path = :schema, public;
 
 -- ---------------------------------------------------------------------------
 
-DROP VIEW IF EXISTS vw_crew_details CASCADE;
+-- DROP VIEW IF EXISTS vw_crew_details CASCADE;
 
 CREATE OR REPLACE VIEW vw_crew_details AS
     SELECT
+        ROW_NUMBER() OVER() AS id,
         sk.cruise_common_name,
         sk.cruise_date_common_name,
         sk.boat_common_name,

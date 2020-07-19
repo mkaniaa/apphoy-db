@@ -21,7 +21,10 @@ CREATE TABLE IF NOT EXISTS participant (
     tshirt_cut              TEXT,
     in_fb_goup              BOOLEAN,
     fb_nickname             TEXT,
-    CONSTRAINT participant_pk PRIMARY KEY (id)
+    CONSTRAINT participant_pk PRIMARY KEY (id),
+    CONSTRAINT participant_verify_tshirt_cut CHECK (tshirt_cut IN ('M', 'W') OR tshirt_cut IS NULL),
+    CONSTRAINT participant_verify_tshirt_size
+    CHECK (tshirt_size IN ('XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL', 'XXXXL') OR tshirt_cut IS NULL)
 );
 
 COMMENT ON TABLE participant IS 'Table keeps information about all participants.';

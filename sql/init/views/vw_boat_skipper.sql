@@ -8,7 +8,7 @@ SET search_path = :schema, public;
 
 -- ---------------------------------------------------------------------------
 
-DROP VIEW IF EXISTS vw_boat_skipper CASCADE;
+-- DROP VIEW IF EXISTS vw_boat_skipper CASCADE;
 
 CREATE OR REPLACE VIEW vw_boat_skipper AS
     SELECT
@@ -28,7 +28,7 @@ CREATE OR REPLACE VIEW vw_boat_skipper AS
     JOIN cruise_date cd ON cw.cruise_date_id = cd.id
     JOIN cruise cu ON cd.cruise_id = cu.id
     JOIN boat b ON cw.boat_id = b.id
-    WHERE p.function = 'skipper'
+    WHERE cw.participant_function = 'skipper'
     ORDER BY cu.start_date, cu.id, cd.id, b.id;
 
 COMMENT ON VIEW vw_boat_skipper IS 'Script creates view for details about all skippers.';

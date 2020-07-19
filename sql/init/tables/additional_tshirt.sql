@@ -19,7 +19,10 @@ CREATE TABLE IF NOT EXISTS additional_tshirt (
     tshirt_cut              TEXT NOT NULL,
     purchaser_full_name     TEXT NOT NULL,
     price                   FLOAT NOT NULL,
-    CONSTRAINT additional_tshirt_pk PRIMARY KEY (id)
+    CONSTRAINT additional_tshirt_pk PRIMARY KEY (id),
+    CONSTRAINT additional_tshirt_verify_tshirt_cut CHECK (tshirt_cut IN ('M', 'W') OR tshirt_cut IS NULL),
+    CONSTRAINT additional_tshirt_verify_tshirt_size
+    CHECK (tshirt_size IN ('XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL') OR tshirt_cut IS NULL)
 );
 
 COMMENT ON TABLE additional_tshirt IS 'Table keeps information about additional t-shirts to order for specified cruise.';

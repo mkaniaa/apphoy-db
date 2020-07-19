@@ -23,23 +23,22 @@ DROP TRIGGER IF EXISTS cruise_date__update_cruise_dates__aiud;
 CREATE OR REPLACE FUNCTION cruise_date__update_cruise_dates__aiud()
     RETURNS TRIGGER LANGUAGE plpgsql
     SET search_path=:schema, public AS
-    $BODY$
+$BODY$
+BEGIN
 
-    BEGIN
+    IF TG_OP = 'UPDATE' THEN
+        PERFORM cruise__update_cruise_dates(NEW.cruise_id);
+        PERFORM cruise__update_cruise_dates(OLD.cruise_id);
+    ELSIF TG_OP = 'DELETE' THEN
+        PERFORM cruise__update_cruise_dates(OLD.cruise_id);
+    ELSE
+        PERFORM cruise__update_cruise_dates(NEW.cruise_id);
+    END IF;
 
-        IF TG_OP = 'UPDATE' THEN
-            PERFORM cruise__update_cruise_dates(NEW.cruise_id);
-            PERFORM cruise__update_cruise_dates(OLD.cruise_id);
-        ELSIF TG_OP = 'DELETE' THEN
-            PERFORM cruise__update_cruise_dates(OLD.cruise_id);
-        ELSE
-            PERFORM cruise__update_cruise_dates(NEW.cruise_id);
-        END IF;
+    RETURN NEW;
 
-        RETURN NEW;
-
-    END;
-    $BODY$;
+END;
+$BODY$;
 
 COMMENT ON FUNCTION cruise_date__update_cruise_dates__aiud()
 IS 'Trigger function for updating end and start date of cruise, that deleted, updated or inserted element refers to.';

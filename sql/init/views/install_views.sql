@@ -10,3 +10,4 @@ SET search_path = :schema, public;
 
 \ir vw_boat_skipper.sql
 \ir vw_crew_details.sql
+\ir vw_cruise_tshirts.sql

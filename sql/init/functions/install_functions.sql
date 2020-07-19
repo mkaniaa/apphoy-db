@@ -13,3 +13,4 @@ SET search_path = :schema, public;
 
 -- cruise_organization
 \ir cruise_organization/cruise__update_cruise_dates.sql
+\ir cruise_organization/additional_tshirt__update_tshirt_info.sql
