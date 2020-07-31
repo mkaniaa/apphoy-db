@@ -16,7 +16,7 @@ CREATE OR REPLACE VIEW vw_crew_details AS
         sk.cruise_common_name,
         sk.cruise_date_common_name,
         sk.boat_common_name,
-        sk.skipper_full_name,
+        cw.participant_function AS member_function,
         p.id AS participant_id,
         p.name || ' ' || p.surname AS crew_member_full_name,
         DATE_PART('year', AGE(p.birth_date)) AS crew_member_age,
@@ -29,6 +29,6 @@ CREATE OR REPLACE VIEW vw_crew_details AS
     JOIN participant p ON cw.participant_id = p.id
     JOIN vw_boat_skipper sk ON cw.boat_id = sk.boat_id AND cw.cruise_date_id = sk.cruise_date_id
     JOIN boat b ON cw.boat_id = b.id
-    ORDER BY sk.cruise_date_start, sk.boat_common_name, sk.skipper_full_name, member_number;
+    ORDER BY sk.cruise_date_start, sk.boat_common_name, sk.skipper_full_name, cw.participant_function DESC, member_number;
 
 COMMENT ON VIEW vw_boat_skipper IS 'Script creates view for details about all crews.';
